@@ -47,7 +47,8 @@ public final class DriverFactory {
 
         // Run without a visible window with: mvn test -Dheadless=true
         if (Boolean.getBoolean("headless")) {
-            options.addArguments("--headless=new");
+            // Extra settings that Chrome needs on cloud build machines
+            options.addArguments("--headless=new", "--no-sandbox", "--disable-dev-shm-usage");
         }
 
         WebDriver driver = new ChromeDriver(options);
